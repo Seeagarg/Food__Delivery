@@ -2,6 +2,9 @@ import React, { useCallback, useRef, useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useCart, useDispatchCart } from './ContextReducer';
+import { ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Card_fooditem(props) {
 
@@ -17,6 +20,7 @@ function Card_fooditem(props) {
   // let fooditems = props.fooditems;
 
   const AddToCartHandle=async()=>{
+    // e.preventDefault();
     let food =[]
     for(const item of data){
       if(item.id === props.foodItem._id){
@@ -27,17 +31,20 @@ function Card_fooditem(props) {
     }
     if(food !== []){
       if(food.size === size){
-        await dispatch({type:"UPDATE",id: props.foodItem._id,price:finalPrice,qty:qty})
+        await dispatch({type:"UPDATE",id: props.foodItem._id,price:finalPrice,qty:qty});
+        toast.success('Item Added');
         return;
       }
       else if(food.size !== size){
         await dispatch({type:"ADD",id:props.foodItem._id,name:props.foodItem.name,img:props.foodItem.img,price:finalPrice,qty:qty,size:size})
+        toast.success('Item Added');
         console.log(data); 
         return;
       }
       return;
     }
     await dispatch({type:"ADD",id:props.foodItem._id,name:props.foodItem.name,img:props.foodItem.img,price:finalPrice,qty:qty,size:size})
+    toast.success('Item Added');
   }
 
   let finalPrice = qty * parseInt(options[size]);
@@ -86,7 +93,7 @@ function Card_fooditem(props) {
        <Button variant='success' onClick={()=>{AddToCartHandle()}}>Add to Cart </Button>
       </Card.Body>
     </Card>
-
+<ToastContainer/>
     </div>
   )
 }

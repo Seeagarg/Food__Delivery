@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { useCart, useDispatchCart } from '../Components/ContextReducer';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
+import '../App.css'
 
 function Cart() {
 
@@ -62,7 +63,7 @@ function Cart() {
           <td>{food.size}</td>
           <td>{food.size}</td>
           <td> ₹{food.price}/-</td>
-          <td onClick={()=>{dispatch({type:"REMOVE" ,index:index})}}><DeleteIcon/></td>
+          <td onClick={()=>{dispatch({type:"REMOVE" ,index:index})}} className='del'><DeleteIcon/></td>
         </tr>
       ))}
       </tbody>

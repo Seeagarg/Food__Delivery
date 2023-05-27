@@ -37,7 +37,7 @@ function Header() {
             className="fs-3"
             style={{ fontFamily: "Family" }}
           >
-            GO FOOD
+            HUNGRY HASTE
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className="justify-content-end">
@@ -53,13 +53,13 @@ function Header() {
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 to="/about"
                 className="text-light fs-4 fw-bold me-3"
                 style={{ textDecoration: "none" }}
               >
                 About
-              </Link>
+              </Link> */}
 
               {localStorage.getItem("authToken") ? (
                 <Link

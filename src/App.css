@@ -5,6 +5,11 @@
   color: white;
 }
 
+.del:hover{
+  cursor: pointer;
+  color: grey
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
